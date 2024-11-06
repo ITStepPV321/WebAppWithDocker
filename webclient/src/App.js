@@ -7,6 +7,7 @@ function App() {
 
   const getUsers = async () => {
     let response = await fetch(
+      // 'http://localhost:5092/api/users',
       '/api/users',
       {
         method: 'get'

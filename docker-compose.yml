@@ -2,13 +2,15 @@ version: '3.4'
 
 services:
   webapi:
-    image: ${DOCKER_REGISTRY-}webappwithdocker
+    image: tetianash/webapi:latest
+    # container_name: webapi
     build:
       context: .
       dockerfile: WebAppWithDocker/Dockerfile
-   
+      
   webclient:
-    image: webclient
+    image: tetianash/webclient:latest
+    # container_name: webclient
     build:
       context: ./webclient
       dockerfile: Dockerfile
