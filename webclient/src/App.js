@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 function App() {
   let [users, setUsers] = useState([]);
-  
+
   const getUsers = async () => {
     let response = await fetch(
       '/api/users',
@@ -13,21 +13,19 @@ function App() {
       }
     );
     let response_json = await response.json();
-    setUsers(response_json);
     console.log(response_json);
-    // console.log(users);
+    setUsers(response_json);
   }
-
   return (
     <div className="App">
       <button onClick={getUsers}>Get users</button>
-      {/* <ul>
-        {
-          users.map((user) => {
-            <li key={user.Id}> {user.Name}</li>
-          })
-        }
-      </ul> */}
+      <ul>
+         { users.length>0 &&
+             users.map((user) =>( 
+            <li style={{textAlign:"start"}} key={user.id}> {user.name}</li>
+          ))
+          }
+      </ul>
 
     </div>
   );
